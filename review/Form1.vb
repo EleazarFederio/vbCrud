@@ -5,7 +5,7 @@ Public Class Form1
     Dim tempId As Int16 = 0
 
     Private Sub load()
-        Dim query As String = "SELECT * FROM people"
+        Dim query As String = "SELECT `firstname`, `lastname`, `age`, `gender` FROM people"
         Dim adpt As New MySqlDataAdapter(query, db.con)
         Dim ds As New DataSet()
         adpt.Fill(ds, "Emp")
@@ -41,11 +41,11 @@ Public Class Form1
     Private Sub PeopleTable_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles PeopleTable.CellClick
         Dim row As DataGridViewRow = PeopleTable.CurrentRow
         Try
-            firstNameBox.Text = row.Cells(1).Value.ToString()
-            lastNameBox.Text = row.Cells(2).Value.ToString()
-            ageBox.Text = row.Cells(3).Value.ToString()
-            genderBox.Text = row.Cells(4).Value.ToString()
-            tempId = row.Cells(0).Value.ToString()
+            firstNameBox.Text = row.Cells(0).Value.ToString()
+            lastNameBox.Text = row.Cells(1).Value.ToString()
+            ageBox.Text = row.Cells(2).Value.ToString()
+            genderBox.Text = row.Cells(3).Value.ToString()
+            'tempId = row.Cells(0).Value.ToString()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
